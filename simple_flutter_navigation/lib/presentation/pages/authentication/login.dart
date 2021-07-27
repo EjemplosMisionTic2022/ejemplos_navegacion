@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:simple_flutter_navigation/presentation/pages/content/home.dart';
 
 import 'signup.dart';
@@ -43,13 +44,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      // NO VALIDATION DONE
-                      final name = _textController.text;
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomePage(name: name)),
-                      );
+                      if (_textController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Value can not be empty')));
+                      } else {
+                        final name = _textController.text;
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomePage(name: name)),
+                        );
+                      }
                     },
                     child: Text("Login")),
                 SizedBox(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:named_getx_navigation/constants.dart';
 import 'package:named_getx_navigation/presentation/pages/content/home.dart';
 
 import 'signup.dart';
@@ -44,9 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      // NO VALIDATION DONE
-                      final name = _textController.text;
-                      Get.off(HomePage(name: name));
+                      if (_textController.text.isEmpty) {
+                        Get.snackbar('Error', 'Value can not be empty',
+                            icon: Icon(Icons.alarm),
+                            backgroundColor: Colors.red);
+                      } else {
+                        final name = _textController.text;
+                        Get.offNamed(HOME_ROUTE, arguments: name);
+                      }
                     },
                     child: Text("Login")),
                 SizedBox(
@@ -54,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Get.to(SignUpPage());
+                      Get.toNamed(SIGNUP_ROUTE);
                     },
                     child: Text("Create user"))
               ],

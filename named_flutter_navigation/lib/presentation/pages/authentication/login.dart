@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_navigation/constants.dart';
 
-import 'signup.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -25,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 Text(
-                  "Login Page",
+                  "Login Page with Flutter named navigation",
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
@@ -43,12 +41,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      // NO VALIDATION DONE
-                      final name = _textController.text;
-                      Navigator.of(context).popAndPushNamed(
-                        HOME_ROUTE,
-                        arguments: name,
-                      );
+                      if (_textController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Value can not be empty')));
+                      } else {
+                        final name = _textController.text;
+                        Navigator.of(context).popAndPushNamed(
+                          HOME_ROUTE,
+                          arguments: name,
+                        );
+                      }
                     },
                     child: Text("Login")),
                 SizedBox(

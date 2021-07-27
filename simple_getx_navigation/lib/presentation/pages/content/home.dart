@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                Get.off(LoginScreen());
+                Get.off(() => LoginScreen());
               },
               icon: Icon(Icons.logout))
         ],
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             Text("Hello ${name}"),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(DetailPage());
+                  Get.to(() => DetailPage());
                 },
                 child: Text("Details")),
           ],

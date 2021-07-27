@@ -44,9 +44,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      // NO VALIDATION DONE
-                      final name = _textController.text;
-                      Get.off(HomePage(name: name));
+                      if (_textController.text.isEmpty) {
+                        Get.snackbar('Error', 'Value can not be empty',
+                            icon: Icon(Icons.alarm),
+                            backgroundColor: Colors.red);
+                      } else {
+                        final name = _textController.text;
+                        Get.off(() => HomePage(name: name));
+                      }
                     },
                     child: Text("Login")),
                 SizedBox(
@@ -54,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextButton(
                     onPressed: () {
-                      Get.to(SignUpPage());
+                      Get.to(() => SignUpPage());
                     },
                     child: Text("Create user"))
               ],

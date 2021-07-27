@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:named_getx_navigation/constants.dart';
 import 'package:named_getx_navigation/presentation/pages/authentication/login.dart';
 import 'detail.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key, required this.name}) : super(key: key);
-  final String name;
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    String name = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
         actions: [
           IconButton(
               onPressed: () {
-                Get.off(LoginScreen());
+                Get.offNamed(LOGIN_ROUTE);
               },
               icon: Icon(Icons.logout))
         ],
@@ -26,7 +28,7 @@ class HomePage extends StatelessWidget {
             Text("Hello ${name}"),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(DetailPage());
+                  Get.toNamed(DETAIL_ROUTE);
                 },
                 child: Text("Details")),
           ],
