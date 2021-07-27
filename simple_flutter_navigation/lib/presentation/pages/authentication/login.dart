@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:simple_flutter_navigation/presentation/pages/content/home.dart';
 
 import 'signup.dart';
