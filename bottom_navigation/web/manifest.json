@@ -1,6 +1,6 @@
 {
-    "name": "botton_navigation",
-    "short_name": "botton_navigation",
+    "name": "bottom_navigation",
+    "short_name": "bottom_navigation",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
